@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="100dp"
+    android:layout_height="200dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/peed_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rect_card_5"
+        android:backgroundTint="#165163"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/peed_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="ZEPETO korea"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/peed_like_count"
+        app:layout_constraintStart_toStartOf="@id/peed_like_count" />
+
+    <TextView
+        android:id="@+id/peed_like_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:drawableStart="@drawable/ic_baseline_favorite_24"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="4.0K"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/peed_img"
+        app:layout_constraintStart_toStartOf="@id/peed_img" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
