@@ -5,74 +5,68 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.market.myzepeto.R
-import com.market.myzepeto.databinding.ItemTypeFriendBinding
-import com.market.myzepeto.databinding.ItemTypeMenuBinding
-import com.market.myzepeto.databinding.ItemTypePeedBinding
 import com.market.myzepeto.model.*
 
-class RecyclerAdapter<T>(list: ArrayList<T>) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class RecyclerAdapter(list: ArrayList<Header>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val items = list
 
-    override fun getItemViewType(position: Int): Int {
-        return items[position].type
+    override fun getItemViewType(position: Int) = when (items[position]) {
+        is Menu -> {
+            menu_type
+        }
+        is Peed -> {
+            peed_type
+        }
+        is Friend -> {
+            friend_type
+        }
+        is Booth -> {
+            booth_type
+        }
+        else -> {
+            throw IllegalStateException("Not Found ViewHolder Type!!")
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view: View?
         return when (viewType) {
             menu_type -> {
-                view = LayoutInflater.from(parent.context).inflate(
-                    R.layout.item_type_menu,
-                    parent,
-                    false
-                )
-                PeedViewHolder(view)
+                MenuViewHolder.create(parent)
             }
             peed_type -> {
-                view = LayoutInflater.from(parent.context).inflate(
-                    R.layout.item_type_peed,
-                    parent,
-                    false
-                )
-                PeedViewHolder(view)
+                PeedViewHolder.create(parent)
             }
             friend_type -> {
-                view = LayoutInflater.from(parent.context).inflate(
-                    R.layout.item_type_friend,
-                    parent,
-                    false
-                )
-                FriendViewHolder(view)
+                FriendViewHolder.create(parent)
             }
-
+            booth_type -> {
+                BoothViewHolder.create(parent)
+            }
             else -> {
-                view = LayoutInflater.from(parent.context).inflate(
-                    R.layout.item_type_booth,
-                    parent,
-                    false
-                )
-                BoothViewHolder(view)
+                throw IllegalStateException("Not Found ViewHolder Type $viewType")
             }
         }
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        when (items[position].type) {
-            menu_type -> {
-                (holder as MenuViewHolder).bind(Menu(items[position]))
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is MenuViewHolder -> {
+                holder.bind(items[position] as Menu)
             }
-
+            is PeedViewHolder -> {
+                holder.bind(items[position] as Peed)
+            }
+            is FriendViewHolder -> {
+                holder.bind(items[position] as Friend)
+            }
+            is BoothViewHolder -> {
+                holder.bind(items[position] as Booth)
+            }
         }
     }
 
-
-    // https://hanyeop.tistory.com/247
-
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
-    }
-
-    inner class MenuViewHolder(private val binding: View) :
+    class MenuViewHolder(private val binding: View) :
         RecyclerView.ViewHolder(binding) {
         fun bind(item: Menu) {
             binding.apply {
@@ -80,9 +74,17 @@ class RecyclerAdapter<T>(list: ArrayList<T>) : RecyclerView.Adapter<RecyclerAdap
 //                title.text = item.title
             }
         }
+
+        companion object Factory {
+            fun create(parent: ViewGroup): MenuViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val view = layoutInflater.inflate(R.layout.item_type_menu, parent, false)
+                return MenuViewHolder(view)
+            }
+        }
     }
 
-    inner class PeedViewHolder(private val binding: View) :
+    class PeedViewHolder(private val binding: View) :
         RecyclerView.ViewHolder(binding) {
         fun bind(item: Peed) {
             binding.apply {
@@ -91,9 +93,17 @@ class RecyclerAdapter<T>(list: ArrayList<T>) : RecyclerView.Adapter<RecyclerAdap
 //                peedLikeCount.text = item.like_count.toString()
             }
         }
+
+        companion object Factory {
+            fun create(parent: ViewGroup): PeedViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val view = layoutInflater.inflate(R.layout.item_type_peed, parent, false)
+                return PeedViewHolder(view)
+            }
+        }
     }
 
-    inner class FriendViewHolder(private val binding: View) :
+    class FriendViewHolder(private val binding: View) :
         RecyclerView.ViewHolder(binding) {
         fun bind(item: Friend) {
             binding.apply {
@@ -102,9 +112,17 @@ class RecyclerAdapter<T>(list: ArrayList<T>) : RecyclerView.Adapter<RecyclerAdap
 //            peedLikeCount.text = item.like_count.toString()
             }
         }
+
+        companion object Factory {
+            fun create(parent: ViewGroup): FriendViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val view = layoutInflater.inflate(R.layout.item_type_friend, parent, false)
+                return FriendViewHolder(view)
+            }
+        }
     }
 
-    inner class BoothViewHolder(private val binding: View) :
+    class BoothViewHolder(private val binding: View) :
         RecyclerView.ViewHolder(binding) {
         fun bind(item: Booth) {
             binding.apply {
@@ -113,5 +131,22 @@ class RecyclerAdapter<T>(list: ArrayList<T>) : RecyclerView.Adapter<RecyclerAdap
 //                peedLikeCount.text = item.like_count.toString()
             }
         }
+
+        companion object Factory {
+            fun create(parent: ViewGroup): BoothViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val view = layoutInflater.inflate(R.layout.item_type_booth, parent, false)
+                return BoothViewHolder(view)
+            }
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return items.size
+    }
+
+    fun addItems(item: Header) {
+        this.items.add(item)
+        this.notifyDataSetChanged()
     }
 }
