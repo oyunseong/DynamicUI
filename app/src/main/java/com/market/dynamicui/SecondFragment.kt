@@ -1,4 +1,4 @@
-package com.market.myzepeto
+package com.market.dynamicui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.market.myzepeto.R
 import com.market.myzepeto.databinding.FragmentSecondBinding
 
 /**

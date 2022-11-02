@@ -1,11 +1,11 @@
-package com.market.myzepeto.home
+package com.market.dynamicui.home
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.market.dynamicui.model.*
 import com.market.myzepeto.R
-import com.market.myzepeto.model.*
 
 class RecyclerAdapter(list: ArrayList<Header>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
