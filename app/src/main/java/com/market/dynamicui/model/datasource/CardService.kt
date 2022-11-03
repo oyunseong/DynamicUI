@@ -25,17 +25,17 @@ class CardService {
             add(
                 CircleHorizontalListResponse(
                     circleItemList = listOf(
-                        CircleItem(
+                        CircleItemResponse(
                             color = "#000000",
                             title = "",
                             hasNewContents = false
                         ),
-                        CircleItem(
+                        CircleItemResponse(
                             color = "#000000",
                             title = "",
                             hasNewContents = false
                         ),
-                        CircleItem(
+                        CircleItemResponse(
                             color = "#000000",
                             title = "",
                             hasNewContents = true

@@ -1,5 +1,9 @@
 package com.market.dynamicui.model
 
-internal enum class CardType {
-    HEADER, VIDEO, CIRCLE_HORIZONTAL_LIST, BANNER_HORIZONTAL_LIST, RECT_HORIZONTAL_LIST
+enum class CardViewType(val value: Int) {
+    HEADER(1),
+    VIDEO(2),
+    CIRCLE_HORIZONTAL_LIST(3),
+    BANNER_HORIZONTAL_LIST(4),
+    RECT_HORIZONTAL_LIST(5)
 }

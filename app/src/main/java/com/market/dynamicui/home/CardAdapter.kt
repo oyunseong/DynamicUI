@@ -4,14 +4,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.market.dynamicui.domain.Card
 import com.market.dynamicui.model.*
 import com.market.myzepeto.R
 
-class RecyclerAdapter(list: ArrayList<Header>) :
+class CardAdapter(list: ArrayList<Card>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val items = list
 
     override fun getItemViewType(position: Int) = when (items[position]) {
+        is
         is Menu -> {
             menu_type
         }

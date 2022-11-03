@@ -28,11 +28,34 @@ data class VideoResponse(
 
 data class CircleHorizontalListResponse(
     override val cardId: String = CardResponseType.CIRCLE_HORIZONTAL_LIST.name,
-    val circleItemList: List<CircleItem>
+    val circleItemList: List<CircleItemResponse>
 ) : CardResponse()
 
-data class CircleItem(
+data class CircleItemResponse(
     val color: String,
     val title: String,
     val hasNewContents: Boolean = false,
+)
+
+data class BannerHorizontalListResponse(
+    override val cardId: String,
+    val bannerItemList: List<BannerItemResponse>
+) : CardResponse()
+
+data class BannerItemResponse(
+    val title:String,
+    val contentsText:String,
+    val contentsImageColor:String,
+    val backgroundColor:String,
+)
+
+data class RectHorizontalListResponse(
+    override val cardId: String,
+    val rectItemList: List<RectItemResponse>
+) : CardResponse()
+
+data class RectItemResponse(
+    val thumbnailColor:String,
+    val title:String,
+    val subTitle:String
 )
