@@ -1,5 +1,8 @@
 package com.market.utils
 
+import android.content.Context
+import android.util.Log
+import android.widget.Toast
 import com.market.dynamicui.domain.BannerItem
 import com.market.dynamicui.domain.CircleItem
 import com.market.dynamicui.domain.RectItem
@@ -50,4 +53,12 @@ fun List<RectItemResponse>.toRectItemList(): List<RectItem> {
             subTitle = it.subTitle
         )
     }
+}
+
+fun String.printLog(tag: String? = null) {
+    Log.d("++$tag", this)
+}
+
+fun Context.showToast(message: String) {
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }

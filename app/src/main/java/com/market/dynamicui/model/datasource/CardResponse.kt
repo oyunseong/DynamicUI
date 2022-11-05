@@ -38,15 +38,15 @@ data class CircleItemResponse(
 )
 
 data class BannerHorizontalListResponse(
-    override val cardId: String,
+    override val cardId: String = CardResponseType.BANNER_HORIZONTAL_LIST.name,
     val bannerItemList: List<BannerItemResponse>
 ) : CardResponse()
 
 data class BannerItemResponse(
-    val title:String,
-    val contentsText:String,
-    val contentsImageColor:String,
-    val backgroundColor:String,
+    val title: String,
+    val contentsText: String,
+    val contentsImageColor: String,
+    val backgroundColor: String,
 )
 
 data class RectHorizontalListResponse(
@@ -55,7 +55,7 @@ data class RectHorizontalListResponse(
 ) : CardResponse()
 
 data class RectItemResponse(
-    val thumbnailColor:String,
-    val title:String,
-    val subTitle:String
+    val thumbnailColor: String,
+    val title: String,
+    val subTitle: String
 )

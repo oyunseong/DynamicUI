@@ -10,6 +10,12 @@ class CardService {
     suspend fun loadCards(): List<CardResponse> {
         return buildList {
             add(
+                HeaderResponse(
+                    title = "헤더1",
+                    buttonText = "더보기1"
+                )
+            )
+            add(
                 VideoResponse(
                     videoUrl = "",
                     videoTitle = "",
@@ -18,8 +24,26 @@ class CardService {
             )
             add(
                 HeaderResponse(
-                    title = "",
-                    buttonText = ""
+                    title = "헤더2",
+                    buttonText = "더보기2"
+                )
+            )
+            add(
+                BannerHorizontalListResponse(
+                    bannerItemList = listOf(
+                        BannerItemResponse(
+                            title = "10.28 ~ 11.09",
+                            contentsText = "내 아바타 인증하고,\nBLACKPINK 콘서트 가자",
+                            contentsImageColor = "#000000",
+                            backgroundColor = "#FBA1C0"
+                        )
+                    )
+                )
+            )
+            add(
+                HeaderResponse(
+                    title = "헤더3",
+                    buttonText = "더보기3"
                 )
             )
             add(

@@ -3,28 +3,31 @@ package com.market.dynamicui.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.market.dynamicui.domain.Card
-import com.market.dynamicui.model.*
+import com.market.dynamicui.domain.*
+import com.market.dynamicui.model.CardViewType
 import com.market.myzepeto.R
 
-class CardAdapter(list: ArrayList<Card>) :
+class CardAdapter() :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private val items = list
+    private var items: List<Card> = emptyList()
 
     override fun getItemViewType(position: Int) = when (items[position]) {
-        is
-        is Menu -> {
-            menu_type
+        is Video -> {
+            CardViewType.VIDEO.value
         }
-        is Peed -> {
-            peed_type
+        is Header -> {
+            CardViewType.HEADER.value
         }
-        is Friend -> {
-            friend_type
+        is CircleHorizontalList -> {
+            CardViewType.CIRCLE_HORIZONTAL_LIST.value
         }
-        is Booth -> {
-            booth_type
+        is RectHorizontalList -> {
+            CardViewType.RECT_HORIZONTAL_LIST.value
+        }
+        is BannerHorizontalList -> {
+            CardViewType.BANNER_HORIZONTAL_LIST.value
         }
         else -> {
             throw IllegalStateException("Not Found ViewHolder Type!!")
@@ -33,17 +36,20 @@ class CardAdapter(list: ArrayList<Card>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            menu_type -> {
-                MenuViewHolder.create(parent)
+            CardViewType.VIDEO.value -> {
+                VideoViewHolder.create(parent)
             }
-            peed_type -> {
-                PeedViewHolder.create(parent)
+            CardViewType.HEADER.value -> {
+                HeaderViewHolder.create(parent)
             }
-            friend_type -> {
-                FriendViewHolder.create(parent)
+            CardViewType.CIRCLE_HORIZONTAL_LIST.value -> {
+                CircleHorizontalListViewHolder.create(parent)
             }
-            booth_type -> {
-                BoothViewHolder.create(parent)
+            CardViewType.RECT_HORIZONTAL_LIST.value -> {
+                RectHorizontalListViewHolder.create(parent)
+            }
+            CardViewType.BANNER_HORIZONTAL_LIST.value -> {
+                BannerHorizontalListViewHolder.create(parent)
             }
             else -> {
                 throw IllegalStateException("Not Found ViewHolder Type $viewType")
@@ -53,102 +59,125 @@ class CardAdapter(list: ArrayList<Card>) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is MenuViewHolder -> {
-                holder.bind(items[position] as Menu)
+            is VideoViewHolder -> {
+                holder.bind(items[position] as Video)
             }
-            is PeedViewHolder -> {
-                holder.bind(items[position] as Peed)
+            is HeaderViewHolder -> {
+                holder.bind(items[position] as Header)
             }
-            is FriendViewHolder -> {
-                holder.bind(items[position] as Friend)
+            is CircleHorizontalListViewHolder -> {
+                holder.bind(items[position] as CircleHorizontalList)
             }
-            is BoothViewHolder -> {
-                holder.bind(items[position] as Booth)
+            is RectHorizontalListViewHolder -> {
+                holder.bind(items[position] as RectHorizontalList)
+            }
+            is BannerHorizontalListViewHolder -> {
+                holder.bind(items[position] as BannerHorizontalList)
+            }
+            else -> {
+                throw IllegalStateException("Not Found ViewHolder Type ;( ")
             }
         }
     }
 
-    class MenuViewHolder(private val binding: View) :
+    class HeaderViewHolder(private val binding: View) :
         RecyclerView.ViewHolder(binding) {
-        fun bind(item: Menu) {
+        private val title = binding.findViewById<TextView>(R.id.headerTitle)
+        private val buttonText = binding.findViewById<TextView>(R.id.headerButtonText)
+        fun bind(item: Header) {
             binding.apply {
-//            icon.background = item.title
-//                title.text = item.title
+                title.text = item.title
+                buttonText.text = item.buttonText
             }
         }
 
         companion object Factory {
-            fun create(parent: ViewGroup): MenuViewHolder {
+            fun create(parent: ViewGroup): HeaderViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.item_type_menu, parent, false)
-                return MenuViewHolder(view)
+                val view = layoutInflater.inflate(R.layout.item_type_header, parent, false)
+                return HeaderViewHolder(view)
             }
         }
     }
 
-    class PeedViewHolder(private val binding: View) :
+    class VideoViewHolder(private val binding: View) :
         RecyclerView.ViewHolder(binding) {
-        fun bind(item: Peed) {
+        fun bind(item: Video) {
             binding.apply {
-//            peedImg.setImageResource()
-//                peedTitle.text = item.title
-//                peedLikeCount.text = item.like_count.toString()
+                // TODO
             }
         }
 
         companion object Factory {
-            fun create(parent: ViewGroup): PeedViewHolder {
+            fun create(parent: ViewGroup): VideoViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.item_type_peed, parent, false)
-                return PeedViewHolder(view)
+                val view = layoutInflater.inflate(R.layout.item_type_circle, parent, false)
+                return VideoViewHolder(view)
             }
         }
     }
 
-    class FriendViewHolder(private val binding: View) :
+    class CircleHorizontalListViewHolder(private val binding: View) :
         RecyclerView.ViewHolder(binding) {
-        fun bind(item: Friend) {
+        fun bind(item: CircleHorizontalList) {
             binding.apply {
-//            peedImg.setImageResource()
-//            .text = item.title
-//            peedLikeCount.text = item.like_count.toString()
+                // TODO
             }
         }
 
         companion object Factory {
-            fun create(parent: ViewGroup): FriendViewHolder {
+            fun create(parent: ViewGroup): CircleHorizontalListViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.item_type_friend, parent, false)
-                return FriendViewHolder(view)
+                val view = layoutInflater.inflate(R.layout.item_type_circle, parent, false)
+                return CircleHorizontalListViewHolder(view)
             }
         }
     }
 
-    class BoothViewHolder(private val binding: View) :
+    class RectHorizontalListViewHolder(private val binding: View) :
         RecyclerView.ViewHolder(binding) {
-        fun bind(item: Booth) {
+        fun bind(item: RectHorizontalList) {
             binding.apply {
-//            peedImg.setImageResource()
-//                peedTitle.text = item.title
-//                peedLikeCount.text = item.like_count.toString()
+                // TODO
             }
         }
 
         companion object Factory {
-            fun create(parent: ViewGroup): BoothViewHolder {
+            fun create(parent: ViewGroup): RectHorizontalListViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.item_type_booth, parent, false)
-                return BoothViewHolder(view)
+                val view = layoutInflater.inflate(R.layout.item_type_circle, parent, false)
+                return RectHorizontalListViewHolder(view)
             }
         }
     }
+
+    class BannerHorizontalListViewHolder(private val binding: View) :
+        RecyclerView.ViewHolder(binding) {
+        //        val title: TextView = binding.findViewById<TextView>(R.id.bannerTitle)
+//        val bannerItemList: RecyclerView = binding.findViewById<RecyclerView>(R.id.bannerRecyclerView)
+
+        fun bind(item: BannerHorizontalList) {
+            binding.apply {
+//                bannerItemList
+            }
+        }
+
+        companion object Factory {
+            fun create(parent: ViewGroup): BannerHorizontalListViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val view = layoutInflater.inflate(R.layout.item_type_circle, parent, false)
+                return BannerHorizontalListViewHolder(view)
+            }
+        }
+    }
+
 
     override fun getItemCount(): Int {
         return items.size
     }
 
-    fun addItems(item: Header) {
-        this.items.add(item)
-        this.notifyDataSetChanged()
+    fun setList(item: List<Card>) {
+        this.items = item
+        notifyDataSetChanged()
     }
 }
