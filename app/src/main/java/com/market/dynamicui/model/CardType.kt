@@ -7,3 +7,9 @@ enum class CardViewType(val value: Int) {
     BANNER_HORIZONTAL_LIST(4),
     RECT_HORIZONTAL_LIST(5)
 }
+
+enum class HorizontalListType(val value: Int) {
+    CIRCLE(1),
+    BANNER(2),
+    RECT(3)
+}

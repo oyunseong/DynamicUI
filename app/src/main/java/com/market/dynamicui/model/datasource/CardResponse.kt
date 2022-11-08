@@ -32,7 +32,7 @@ data class CircleHorizontalListResponse(
 ) : CardResponse()
 
 data class CircleItemResponse(
-    val color: String,
+    val iconColor: String,
     val title: String,
     val hasNewContents: Boolean = false,
 )
@@ -44,7 +44,7 @@ data class BannerHorizontalListResponse(
 
 data class BannerItemResponse(
     val title: String,
-    val contentsText: String,
+    val subTitle: String,
     val contentsImageColor: String,
     val backgroundColor: String,
 )

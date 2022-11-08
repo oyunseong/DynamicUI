@@ -27,7 +27,7 @@ fun String.convertCardType(): Int {
 fun List<CircleItemResponse>.toCircleItemList(): List<CircleItem> {
     return map {
         CircleItem(
-            color = it.color,
+            iconColor = it.iconColor,
             title = it.title,
             hasNewContents = it.hasNewContents
         )
@@ -38,7 +38,7 @@ fun List<BannerItemResponse>.toBannerItemList(): List<BannerItem> {
     return map {
         BannerItem(
             title = it.title,
-            contentsText = it.contentsText,
+            subTitle = it.subTitle,
             contentsImageColor = it.contentsImageColor,
             backgroundColor = it.backgroundColor
         )

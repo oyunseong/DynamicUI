@@ -111,7 +111,7 @@ class CardAdapter() :
         companion object Factory {
             fun create(parent: ViewGroup): VideoViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.item_type_circle, parent, false)
+                val view = layoutInflater.inflate(R.layout.item_circle, parent, false)
                 return VideoViewHolder(view)
             }
         }
@@ -128,7 +128,7 @@ class CardAdapter() :
         companion object Factory {
             fun create(parent: ViewGroup): CircleHorizontalListViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.item_type_circle, parent, false)
+                val view = layoutInflater.inflate(R.layout.item_circle, parent, false)
                 return CircleHorizontalListViewHolder(view)
             }
         }
@@ -145,7 +145,7 @@ class CardAdapter() :
         companion object Factory {
             fun create(parent: ViewGroup): RectHorizontalListViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.item_type_circle, parent, false)
+                val view = layoutInflater.inflate(R.layout.item_circle, parent, false)
                 return RectHorizontalListViewHolder(view)
             }
         }
@@ -165,7 +165,7 @@ class CardAdapter() :
         companion object Factory {
             fun create(parent: ViewGroup): BannerHorizontalListViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.item_type_circle, parent, false)
+                val view = layoutInflater.inflate(R.layout.item_circle, parent, false)
                 return BannerHorizontalListViewHolder(view)
             }
         }

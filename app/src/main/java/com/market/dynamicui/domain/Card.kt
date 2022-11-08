@@ -25,7 +25,7 @@ data class CircleHorizontalList(
 ) : Card()
 
 data class CircleItem(
-    val color: String,
+    val iconColor: String,
     val title: String,
     val hasNewContents: Boolean = false,
 )
@@ -37,7 +37,7 @@ data class BannerHorizontalList(
 
 data class BannerItem(
     val title: String,
-    val contentsText: String,
+    val subTitle: String,
     val contentsImageColor: String,
     val backgroundColor: String,
 )

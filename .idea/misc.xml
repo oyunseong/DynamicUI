@@ -10,12 +10,16 @@
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.2598958333333333" />
         <entry key="app/src/main/res/layout/holding_goods.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/item_banner.xml" value="0.2598958333333333" />
+        <entry key="app/src/main/res/layout/item_type_banner.xml" value="0.2598958333333333" />
         <entry key="app/src/main/res/layout/item_type_banner_recyclerview.xml" value="0.34270833333333334" />
         <entry key="app/src/main/res/layout/item_type_booth.xml" value="0.23425925925925925" />
-        <entry key="app/src/main/res/layout/item_type_circle.xml" value="1.0" />
+        <entry key="app/src/main/res/layout/item_type_circle.xml" value="0.29564411492122333" />
         <entry key="app/src/main/res/layout/item_type_friend.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_type_header.xml" value="0.2953703703703704" />
         <entry key="app/src/main/res/layout/item_type_menu.xml" value="0.22" />
         <entry key="app/src/main/res/layout/item_type_peed.xml" value="0.23425925925925925" />
+        <entry key="app/src/main/res/layout/item_type_rect.xml" value="0.34270833333333334" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.67" />
       </map>
     </option>
