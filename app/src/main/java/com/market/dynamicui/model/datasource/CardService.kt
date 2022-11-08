@@ -50,18 +50,18 @@ class CardService {
                 CircleHorizontalListResponse(
                     circleItemList = listOf(
                         CircleItemResponse(
-                            iconColor = "#000000",
-                            title = "",
+                            iconColor = "#2a6214",
+                            title = "원1",
                             hasNewContents = false
                         ),
                         CircleItemResponse(
-                            iconColor = "#000000",
-                            title = "",
+                            iconColor = "#546782",
+                            title = "원2",
                             hasNewContents = false
                         ),
                         CircleItemResponse(
-                            iconColor = "#000000",
-                            title = "",
+                            iconColor = "#g4521d",
+                            title = "원3",
                             hasNewContents = true
                         )
                     )

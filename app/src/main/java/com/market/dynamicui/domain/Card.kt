@@ -24,31 +24,36 @@ data class CircleHorizontalList(
     val circleItemList: List<CircleItem>
 ) : Card()
 
-data class CircleItem(
-    val iconColor: String,
-    val title: String,
-    val hasNewContents: Boolean = false,
-)
 
 data class BannerHorizontalList(
     override val cardId: Int = CardViewType.BANNER_HORIZONTAL_LIST.value,
     val bannerItemList: List<BannerItem>
 ) : Card()
 
-data class BannerItem(
-    val title: String,
-    val subTitle: String,
-    val contentsImageColor: String,
-    val backgroundColor: String,
-)
-
 data class RectHorizontalList(
     override val cardId: Int = CardViewType.RECT_HORIZONTAL_LIST.value,
     val rectItemList: List<RectItem>
 ) : Card()
 
+abstract class CardItem
+
+data class CircleItem(
+    val iconColor: String,
+    val title: String,
+    val hasNewContents: Boolean = false,
+) : CardItem()
+
+data class BannerItem(
+    val title: String,
+    val subTitle: String,
+    val contentsImageColor: String,
+    val backgroundColor: String,
+) : CardItem()
+
 data class RectItem(
     val thumbnailColor: String,
     val title: String,
     val subTitle: String
-)
+) : CardItem()
+
+

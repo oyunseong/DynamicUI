@@ -7,16 +7,20 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.market.dynamicui.domain.BannerItem
-import com.market.dynamicui.domain.Card
-import com.market.dynamicui.domain.CircleItem
-import com.market.dynamicui.domain.RectItem
+import com.market.dynamicui.domain.*
+import com.market.dynamicui.model.CardViewType
 import com.market.dynamicui.model.HorizontalListType
 import com.market.myzepeto.R
 
-class CardHorizontalAdapter :
+class CardHorizontalAdapter() :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private val items: List<Card> = emptyList()
+    private lateinit var items: List<CardItem>
+
+    fun setList(item: List<CardItem>) {
+        this.items = item
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             HorizontalListType.CIRCLE.value -> {
@@ -51,6 +55,21 @@ class CardHorizontalAdapter :
         }
     }
 
+    override fun getItemViewType(position: Int) = when (items[position]) {
+        is CircleItem -> {
+            HorizontalListType.CIRCLE.value
+        }
+        is BannerItem -> {
+            HorizontalListType.BANNER.value
+        }
+        is RectItem -> {
+            HorizontalListType.RECT.value
+        }
+        else -> {
+            throw IllegalStateException("Not Found ViewHolder Type!! $position, ${items[position]}")
+        }
+    }
+
     override fun getItemCount(): Int {
         return items.size
     }
@@ -61,7 +80,7 @@ class CardHorizontalAdapter :
         private val circleItemTitle: TextView = binding.findViewById(R.id.circleItemTitle)
         fun bind(item: CircleItem) {
             binding.apply {
-                circleIconColor.setBackgroundColor(Color.parseColor(item.iconColor))
+//                circleIconColor.setBackgroundColor(Color.parseColor(item.iconColor))
                 circleItemTitle.text = item.title
             }
         }
