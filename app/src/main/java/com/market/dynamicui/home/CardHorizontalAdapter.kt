@@ -98,9 +98,8 @@ class CardHorizontalAdapter() :
         RecyclerView.ViewHolder(binding) {
         private val bannerTitle: TextView = binding.findViewById(R.id.bannerTitle)
         private val bannerSubTitle: TextView = binding.findViewById(R.id.bannerSubTitle)
-
-        //3
-        //4
+//        private val contentsImageColor:TextView = binding.findViewById(R.id.bannerTitle)
+//        private val backgroundColor: String,
         fun bind(item: BannerItem) {
             bannerTitle.text = item.title
             bannerSubTitle.text = item.subTitle

@@ -145,16 +145,23 @@ class CardAdapter() :
 
     class RectHorizontalListViewHolder(private val binding: View) :
         RecyclerView.ViewHolder(binding) {
+        private val cardHorizontalAdapter = CardHorizontalAdapter()
+        private var rectHorizontalRecyclerView: RecyclerView =
+            binding.findViewById(R.id.rectRecyclerView)
+
         fun bind(item: RectHorizontalList) {
-            binding.apply {
-                // TODO
+            cardHorizontalAdapter.setList(item.rectItemList)
+            rectHorizontalRecyclerView.apply {
+                layoutManager =
+                    LinearLayoutManager(binding.context, LinearLayoutManager.HORIZONTAL, false)
+                adapter = cardHorizontalAdapter
             }
         }
 
         companion object Factory {
             fun create(parent: ViewGroup): RectHorizontalListViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.item_circle, parent, false)
+                val view = layoutInflater.inflate(R.layout.item_type_rect, parent, false)
                 return RectHorizontalListViewHolder(view)
             }
         }
@@ -162,19 +169,23 @@ class CardAdapter() :
 
     class BannerHorizontalListViewHolder(private val binding: View) :
         RecyclerView.ViewHolder(binding) {
-        //        val title: TextView = binding.findViewById<TextView>(R.id.bannerTitle)
-//        val bannerItemList: RecyclerView = binding.findViewById<RecyclerView>(R.id.bannerRecyclerView)
+        private val cardHorizontalAdapter = CardHorizontalAdapter()
+        private var bannerHorizontalRecyclerView: RecyclerView =
+            binding.findViewById(R.id.bannerRecyclerView)
 
         fun bind(item: BannerHorizontalList) {
-            binding.apply {
-//                bannerItemList
+            cardHorizontalAdapter.setList(item.bannerItemList)
+            bannerHorizontalRecyclerView.apply {
+                layoutManager =
+                    LinearLayoutManager(binding.context, LinearLayoutManager.HORIZONTAL, false)
+                adapter = cardHorizontalAdapter
             }
         }
 
         companion object Factory {
             fun create(parent: ViewGroup): BannerHorizontalListViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.item_circle, parent, false)
+                val view = layoutInflater.inflate(R.layout.item_type_banner, parent, false)
                 return BannerHorizontalListViewHolder(view)
             }
         }
