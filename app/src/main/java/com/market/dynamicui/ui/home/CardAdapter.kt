@@ -1,6 +1,7 @@
 package com.market.dynamicui.ui.home
 
 import android.os.Parcelable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -162,6 +163,17 @@ class CardAdapter() :
             binding.findViewById(R.id.circleRecyclerView)
         lateinit var horizontalLayoutManager: LinearLayoutManager
 
+        init {
+            initItemDistance()
+        }
+
+        private fun initItemDistance() {
+            circleHorizontalRecyclerView.apply {
+                addItemDecoration(HorizontalItemDecorator(8))
+                addItemDecoration(VerticalItemDecorator(8))
+            }
+        }
+
         fun bind(item: CircleHorizontalList) {
             cardHorizontalAdapter.setList(item.circleItemList)
             horizontalLayoutManager =
@@ -169,8 +181,6 @@ class CardAdapter() :
             circleHorizontalRecyclerView.apply {
                 layoutManager = horizontalLayoutManager
                 adapter = cardHorizontalAdapter
-                addItemDecoration(HorizontalItemDecorator(8))
-                addItemDecoration(VerticalItemDecorator(8))
             }
         }
 
@@ -190,6 +200,17 @@ class CardAdapter() :
             binding.findViewById(R.id.rectRecyclerView)
         lateinit var horizontalLayoutManager: LinearLayoutManager
 
+        init {
+            initItemDistance()
+        }
+
+        private fun initItemDistance() {
+            rectHorizontalRecyclerView.apply {
+                addItemDecoration(HorizontalItemDecorator(8))
+                addItemDecoration(VerticalItemDecorator(8))
+            }
+        }
+
         fun bind(item: RectHorizontalList) {
             cardHorizontalAdapter.setList(item.rectItemList)
             horizontalLayoutManager =
@@ -197,13 +218,14 @@ class CardAdapter() :
             rectHorizontalRecyclerView.apply {
                 layoutManager = horizontalLayoutManager
                 adapter = cardHorizontalAdapter
-                addItemDecoration(HorizontalItemDecorator(8))
-                addItemDecoration(VerticalItemDecorator(8))
             }
         }
 
+
+
         companion object Factory {
             fun create(parent: ViewGroup): RectHorizontalListViewHolder {
+                Log.d("++RectHorizontalListViewHolder","Factory create")
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val view = layoutInflater.inflate(R.layout.item_type_rect, parent, false)
                 return RectHorizontalListViewHolder(view)
@@ -217,6 +239,17 @@ class CardAdapter() :
         private var bannerHorizontalRecyclerView: RecyclerView =
             binding.findViewById(R.id.bannerRecyclerView)
         lateinit var horizontalLayoutManager: LinearLayoutManager
+
+        init {
+            initItemDistance()
+        }
+
+        private fun initItemDistance() {
+            bannerHorizontalRecyclerView.apply {
+                addItemDecoration(HorizontalItemDecorator(8))
+                addItemDecoration(VerticalItemDecorator(8))
+            }
+        }
 
         fun bind(item: BannerHorizontalList) {
             cardHorizontalAdapter.setList(item.bannerItemList)

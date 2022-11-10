@@ -19,7 +19,7 @@ class SecondFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_first,
+            R.layout.fragment_second,
             container,
             false
         )
