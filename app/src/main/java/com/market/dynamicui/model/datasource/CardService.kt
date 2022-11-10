@@ -1,6 +1,7 @@
 package com.market.dynamicui.model.datasource
 
-import com.market.dynamicui.domain.CircleHorizontalList
+import android.util.Log
+import com.market.dynamicui.utils.createRandomColorCode
 
 /**
  * 서버 코드는 클라에서 접근 불가능
@@ -8,6 +9,36 @@ import com.market.dynamicui.domain.CircleHorizontalList
  * */
 
 class CardService {
+
+    private fun createRandomCircleItems(): List<CircleItemResponse> {
+        val list: MutableList<CircleItemResponse> = mutableListOf()
+        for (i in 0..30) {
+            list.add(
+                CircleItemResponse(
+                    iconColor = createRandomColorCode(),
+                    title = "list",
+                    hasNewContents = false,
+                )
+            )
+        }
+        return list
+    }
+
+    private fun createRandomRectItems(): List<RectItemResponse> {
+        val list: MutableList<RectItemResponse> = mutableListOf()
+
+        for (i in 0..30) {
+            list.add(
+                RectItemResponse(
+                    thumbnailColor = createRandomColorCode(),
+                    title = "title$i",
+                    subTitle = "subtitle$i"
+                )
+            )
+        }
+        return list
+    }
+
 
     suspend fun loadCards(): List<CardResponse> {
         return buildList {
@@ -359,6 +390,22 @@ class CardService {
                             subTitle = "코인이 팡팡 Let's Party"
                         )
                     )
+                )
+            )
+            add(
+                CircleHorizontalListResponse(
+                    circleItemList = createRandomCircleItems()
+                )
+            )
+            add(
+                HeaderResponse(
+                    title = "네모네모",
+                    buttonText = "더보기"
+                )
+            )
+            add(
+                RectHorizontalListResponse(
+                    rectItemList = createRandomRectItems()
                 )
             )
         }

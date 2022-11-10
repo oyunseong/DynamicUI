@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.market.dynamicui.domain.Card
-import com.market.dynamicui.model.datasource.repository.CardRepository
 import com.market.dynamicui.model.datasource.CardService
+import com.market.dynamicui.model.repository.CardRepository
 import kotlinx.coroutines.launch
 
 class CardViewModel(

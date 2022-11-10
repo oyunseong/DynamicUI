@@ -1,5 +1,6 @@
 package com.market.dynamicui.ui.home
 
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import com.market.myzepeto.R
 class CardAdapter() :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var items: List<Card> = emptyList()
+    private val scrollStates = hashMapOf<Int, Parcelable>()
 
     override fun getItemViewType(position: Int) = when (items[position]) {
         is Video -> {
@@ -61,6 +63,8 @@ class CardAdapter() :
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val key = items[holder.adapterPosition].cardId
+        val state = scrollStates[key]
         when (holder) {
             is VideoViewHolder -> {
                 holder.bind(items[position] as Video)
@@ -70,12 +74,27 @@ class CardAdapter() :
             }
             is CircleHorizontalListViewHolder -> {
                 holder.bind(items[position] as CircleHorizontalList)
+                if (state != null) {
+                    holder.horizontalLayoutManager.onRestoreInstanceState(state)
+                } else {
+                    holder.horizontalLayoutManager.scrollToPosition(0)
+                }
             }
             is RectHorizontalListViewHolder -> {
                 holder.bind(items[position] as RectHorizontalList)
+                if (state != null) {
+                    holder.horizontalLayoutManager.onRestoreInstanceState(state)
+                } else {
+                    holder.horizontalLayoutManager.scrollToPosition(0)
+                }
             }
             is BannerHorizontalListViewHolder -> {
                 holder.bind(items[position] as BannerHorizontalList)
+                if (state != null) {
+                    holder.horizontalLayoutManager.onRestoreInstanceState(state)
+                } else {
+                    holder.horizontalLayoutManager.scrollToPosition(0)
+                }
             }
             else -> {
                 throw IllegalStateException("Not Found ViewHolder Type ;( ")
@@ -120,19 +139,35 @@ class CardAdapter() :
         }
     }
 
+    override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
+        super.onViewRecycled(holder)
+        val key = items[holder.adapterPosition].cardId
+        when (holder) {
+            is CircleHorizontalListViewHolder -> {
+                scrollStates[key] = holder.horizontalLayoutManager.onSaveInstanceState()!!
+            }
+            is BannerHorizontalListViewHolder -> {
+                scrollStates[key] = holder.horizontalLayoutManager.onSaveInstanceState()!!
+            }
+            is RectHorizontalListViewHolder -> {
+                scrollStates[key] = holder.horizontalLayoutManager.onSaveInstanceState()!!
+            }
+        }
+    }
+
     class CircleHorizontalListViewHolder(private val binding: View) :
         RecyclerView.ViewHolder(binding) {
         private val cardHorizontalAdapter = CardHorizontalAdapter()
         private var circleHorizontalRecyclerView: RecyclerView =
             binding.findViewById(R.id.circleRecyclerView)
-
+        lateinit var horizontalLayoutManager: LinearLayoutManager
 
         fun bind(item: CircleHorizontalList) {
             cardHorizontalAdapter.setList(item.circleItemList)
-
+            horizontalLayoutManager =
+                LinearLayoutManager(binding.context, LinearLayoutManager.HORIZONTAL, false)
             circleHorizontalRecyclerView.apply {
-                layoutManager =
-                    LinearLayoutManager(binding.context, LinearLayoutManager.HORIZONTAL, false)
+                layoutManager = horizontalLayoutManager
                 adapter = cardHorizontalAdapter
                 addItemDecoration(HorizontalItemDecorator(8))
                 addItemDecoration(VerticalItemDecorator(8))
@@ -144,7 +179,6 @@ class CardAdapter() :
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val view = layoutInflater.inflate(R.layout.item_type_circle, parent, false)
                 return CircleHorizontalListViewHolder(view)
-
             }
         }
     }
@@ -154,12 +188,14 @@ class CardAdapter() :
         private val cardHorizontalAdapter = CardHorizontalAdapter()
         private var rectHorizontalRecyclerView: RecyclerView =
             binding.findViewById(R.id.rectRecyclerView)
+        lateinit var horizontalLayoutManager: LinearLayoutManager
 
         fun bind(item: RectHorizontalList) {
             cardHorizontalAdapter.setList(item.rectItemList)
+            horizontalLayoutManager =
+                LinearLayoutManager(binding.context, LinearLayoutManager.HORIZONTAL, false)
             rectHorizontalRecyclerView.apply {
-                layoutManager =
-                    LinearLayoutManager(binding.context, LinearLayoutManager.HORIZONTAL, false)
+                layoutManager = horizontalLayoutManager
                 adapter = cardHorizontalAdapter
                 addItemDecoration(HorizontalItemDecorator(8))
                 addItemDecoration(VerticalItemDecorator(8))
@@ -180,12 +216,14 @@ class CardAdapter() :
         private val cardHorizontalAdapter = CardHorizontalAdapter()
         private var bannerHorizontalRecyclerView: RecyclerView =
             binding.findViewById(R.id.bannerRecyclerView)
+        lateinit var horizontalLayoutManager: LinearLayoutManager
 
         fun bind(item: BannerHorizontalList) {
             cardHorizontalAdapter.setList(item.bannerItemList)
+            horizontalLayoutManager =
+                LinearLayoutManager(binding.context, LinearLayoutManager.HORIZONTAL, false)
             bannerHorizontalRecyclerView.apply {
-                layoutManager =
-                    LinearLayoutManager(binding.context, LinearLayoutManager.HORIZONTAL, false)
+                layoutManager = horizontalLayoutManager
                 adapter = cardHorizontalAdapter
             }
         }
