@@ -12,6 +12,13 @@ class CardService {
     suspend fun loadCards(): List<CardResponse> {
         return buildList {
             add(
+                VideoResponse(
+                    videoUrl = "",
+                    videoTitle = "",
+                    autoPlay = false
+                )
+            )
+            add(
                 CircleHorizontalListResponse(
                     circleItemList = listOf(
                         CircleItemResponse(
@@ -52,24 +59,42 @@ class CardService {
                             iconColor = "#ff8c00",
                             title = "카메라",
                             hasNewContents = false,
+                        ),
+                        CircleItemResponse(
+                            iconColor = "#ff8c00",
+                            title = "튜토리얼",
+                            hasNewContents = false,
+                        ),
+                        CircleItemResponse(
+                            iconColor = "#ff8c00",
+                            title = "더보기",
+                            hasNewContents = false,
                         )
-
                     )
-
-
                 )
             )
             add(
                 HeaderResponse(
-                    title = "헤더1",
-                    buttonText = "더보기1"
+                    title = "실시간 추천 피드",
+                    buttonText = "더보기"
                 )
             )
             add(
-                VideoResponse(
-                    videoUrl = "",
-                    videoTitle = "",
-                    autoPlay = false
+                BannerHorizontalListResponse(
+                    bannerItemList = listOf(
+                        BannerItemResponse(
+                            title = "10.28 ~ 11.09",
+                            subTitle = "내 아바타 인증하고,\nBLACKPINK 콘서트 가자",
+                            contentsImageColor = "#ff0000",
+                            backgroundColor = "#FBA1C0"
+                        ),
+                        BannerItemResponse(
+                            title = "10.28 ~ 11.09",
+                            subTitle = "내 아바타 인증하고,\nBLACKPINK 콘서트 가자",
+                            contentsImageColor = "#ff8c00",
+                            backgroundColor = "#4b0082"
+                        )
+                    )
                 )
             )
             add(
@@ -79,21 +104,9 @@ class CardService {
                 )
             )
             add(
-                BannerHorizontalListResponse(
-                    bannerItemList = listOf(
-                        BannerItemResponse(
-                            title = "10.28 ~ 11.09",
-                            subTitle = "내 아바타 인증하고,\nBLACKPINK 콘서트 가자",
-                            contentsImageColor = "#000000",
-                            backgroundColor = "#FBA1C0"
-                        )
-                    )
-                )
-            )
-            add(
                 HeaderResponse(
-                    title = "헤더3",
-                    buttonText = "더보기3"
+                    title = "친구",
+                    buttonText = "더보기"
                 )
             )
             add(
@@ -101,20 +114,41 @@ class CardService {
                     circleItemList = listOf(
                         CircleItemResponse(
                             iconColor = "#2a6214",
-                            title = "원1",
+                            title = "친구 추가",
                             hasNewContents = false
                         ),
                         CircleItemResponse(
                             iconColor = "#546782",
-                            title = "원2",
+                            title = "Daum",
                             hasNewContents = false
                         ),
                         CircleItemResponse(
-                            iconColor = "#g4521d",
-                            title = "원3",
+                            iconColor = "#546782",
+                            title = "Google",
+                            hasNewContents = true
+                        ),
+                        CircleItemResponse(
+                            iconColor = "#546782",
+                            title = "Naver",
+                            hasNewContents = true
+                        ),
+                        CircleItemResponse(
+                            iconColor = "#546782",
+                            title = "android11",
+                            hasNewContents = true
+                        ),
+                        CircleItemResponse(
+                            iconColor = "#546782",
+                            title = "Kakao",
                             hasNewContents = true
                         )
                     )
+                )
+            )
+            add(
+                HeaderResponse(
+                    title = "월드 핫플레이스 Top 7",
+                    buttonText = "더보기"
                 )
             )
         }

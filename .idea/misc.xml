@@ -3,25 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/gkrls/AndroidStudioProjects/MYZEPETO/app/src/main/res/drawable/round_30.xml" value="0.2345" />
-        <entry key="..\:/Users/gkrls/AndroidStudioProjects/MYZEPETO/app/src/main/res/layout/fragment_first.xml" value="0.2678478374153205" />
-        <entry key="..\:/Users/gkrls/AndroidStudioProjects/MYZEPETO/app/src/main/res/layout/fragment_second.xml" value="0.18802083333333333" />
-        <entry key="..\:/Users/gkrls/AndroidStudioProjects/MYZEPETO/app/src/main/res/layout/item_banner.xml" value="0.33" />
-        <entry key="..\:/Users/gkrls/AndroidStudioProjects/MYZEPETO/app/src/main/res/layout/item_circle.xml" value="0.67" />
-        <entry key="..\:/Users/gkrls/AndroidStudioProjects/MYZEPETO/app/src/main/res/layout/item_rect.xml" value="0.18802083333333333" />
-        <entry key="..\:/Users/gkrls/AndroidStudioProjects/MYZEPETO/app/src/main/res/layout/item_type_banner.xml" value="0.18802083333333333" />
-        <entry key="..\:/Users/gkrls/AndroidStudioProjects/MYZEPETO/app/src/main/res/layout/item_type_circle.xml" value="0.1875" />
-        <entry key="..\:/Users/gkrls/AndroidStudioProjects/MYZEPETO/app/src/main/res/layout/item_type_header.xml" value="0.19010416666666666" />
-        <entry key="..\:/Users/gkrls/AndroidStudioProjects/MYZEPETO/app/src/main/res/layout/item_type_rect.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/gkrls/AndroidStudioProjects/MYZEPETO/app/src/main/res/layout/item_type_video.xml" value="0.18697916666666667" />
+        <entry key="app/src/main/res/drawable/banner_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.215" />
+        <entry key="app/src/main/res/drawable/round_30.xml" value="0.2625" />
+        <entry key="app/src/main/res/drawable/round_30_d3d3d3.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/round_textview.xml" value="0.215" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33060109289617484" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.2598958333333333" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.2598958333333333" />
         <entry key="app/src/main/res/layout/holding_goods.xml" value="0.75" />
-        <entry key="app/src/main/res/layout/item_banner.xml" value="0.2598958333333333" />
+        <entry key="app/src/main/res/layout/item_banner.xml" value="0.2563106796116505" />
+        <entry key="app/src/main/res/layout/item_circle.xml" value="1.0" />
         <entry key="app/src/main/res/layout/item_type_banner.xml" value="0.2598958333333333" />
         <entry key="app/src/main/res/layout/item_type_banner_recyclerview.xml" value="0.34270833333333334" />
         <entry key="app/src/main/res/layout/item_type_booth.xml" value="0.23425925925925925" />

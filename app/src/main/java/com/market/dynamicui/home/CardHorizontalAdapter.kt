@@ -1,5 +1,6 @@
 package com.market.dynamicui.home
 
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +9,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.market.dynamicui.domain.*
-import com.market.dynamicui.model.CardViewType
 import com.market.dynamicui.model.HorizontalListType
 import com.market.myzepeto.R
 
@@ -80,7 +80,10 @@ class CardHorizontalAdapter() :
         private val circleItemTitle: TextView = binding.findViewById(R.id.circleItemTitle)
         fun bind(item: CircleItem) {
             binding.apply {
-//                circleIconColor.setBackgroundColor(Color.parseColor(item.iconColor))
+                val states = arrayOf(intArrayOf(android.R.attr.state_enabled))
+                val colors = intArrayOf(Color.parseColor(item.iconColor))
+                val colorStateList = ColorStateList(states, colors)
+                circleIconColor.backgroundTintList = colorStateList
                 circleItemTitle.text = item.title
             }
         }
@@ -98,11 +101,21 @@ class CardHorizontalAdapter() :
         RecyclerView.ViewHolder(binding) {
         private val bannerTitle: TextView = binding.findViewById(R.id.bannerTitle)
         private val bannerSubTitle: TextView = binding.findViewById(R.id.bannerSubTitle)
-//        private val contentsImageColor:TextView = binding.findViewById(R.id.bannerTitle)
-//        private val backgroundColor: String,
+        private val bannerContentsImageColor: TextView =
+            binding.findViewById(R.id.bannerContentsImage)
+        private val bannerBackgroundColor: TextView =
+            binding.findViewById(R.id.bannerBackgroundColor)
+
         fun bind(item: BannerItem) {
+            val states = arrayOf(intArrayOf(android.R.attr.state_enabled))
+            val backgroundColor = intArrayOf(Color.parseColor(item.backgroundColor))
+            val imageColor = intArrayOf(Color.parseColor(item.contentsImageColor))
+            val backgroundColorStateList = ColorStateList(states, backgroundColor)
+            val imageColorStateList = ColorStateList(states, imageColor)
             bannerTitle.text = item.title
             bannerSubTitle.text = item.subTitle
+            bannerContentsImageColor.backgroundTintList = imageColorStateList
+            bannerBackgroundColor.backgroundTintList = backgroundColorStateList
         }
 
         companion object Factory {

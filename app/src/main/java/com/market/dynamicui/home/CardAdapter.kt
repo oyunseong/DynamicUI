@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.market.dynamicui.domain.*
 import com.market.dynamicui.model.CardViewType
+import com.market.dynamicui.utils.HorizontalItemDecorator
+import com.market.dynamicui.utils.VerticalItemDecorator
 import com.market.myzepeto.R
 
 class CardAdapter() :
@@ -126,10 +128,13 @@ class CardAdapter() :
 
         fun bind(item: CircleHorizontalList) {
             cardHorizontalAdapter.setList(item.circleItemList)
+
             circleHorizontalRecyclerView.apply {
                 layoutManager =
                     LinearLayoutManager(binding.context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = cardHorizontalAdapter
+                addItemDecoration(HorizontalItemDecorator(8))
+                addItemDecoration(VerticalItemDecorator(8))
             }
         }
 

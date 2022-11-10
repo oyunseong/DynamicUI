@@ -10,6 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.market.dynamicui.home.CardAdapter
 import com.market.dynamicui.home.CardViewModel
+import com.market.dynamicui.utils.HorizontalItemDecorator
+import com.market.dynamicui.utils.VerticalItemDecorator
 import com.market.myzepeto.R
 import com.market.myzepeto.databinding.FragmentFirstBinding
 

@@ -14,7 +14,7 @@ fun List<CardResponse>.toCard(): List<Card> {
                 Header(
                     cardId = it.cardId.convertCardType(),
                     title = it.title,
-                    buttonText = it.title,
+                    buttonText = it.buttonText,
                 )
             }
             is VideoResponse -> {
