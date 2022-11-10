@@ -127,17 +127,19 @@ class CardHorizontalAdapter() :
         }
     }
 
-
     class RectViewHolder(private val binding: View) :
         RecyclerView.ViewHolder(binding) {
         private val title: TextView = binding.findViewById(R.id.rectTitle)
         private val subTitle: TextView = binding.findViewById(R.id.rectSubTitle)
-        private val image: ImageView = binding.findViewById(R.id.rectImage)
+        private val image: TextView = binding.findViewById(R.id.rectImage)
 
         fun bind(item: RectItem) {
+            val states = arrayOf(intArrayOf(android.R.attr.state_enabled))
+            val colors = intArrayOf(Color.parseColor(item.thumbnailColor))
+            val colorStateList = ColorStateList(states, colors)
             title.text = item.title
             subTitle.text = item.subTitle
-            image.setBackgroundColor(Color.parseColor(item.thumbnailColor))
+            image.backgroundTintList = colorStateList
         }
 
 

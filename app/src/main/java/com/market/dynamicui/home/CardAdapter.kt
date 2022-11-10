@@ -160,6 +160,8 @@ class CardAdapter() :
                 layoutManager =
                     LinearLayoutManager(binding.context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = cardHorizontalAdapter
+                addItemDecoration(HorizontalItemDecorator(8))
+                addItemDecoration(VerticalItemDecorator(8))
             }
         }
 

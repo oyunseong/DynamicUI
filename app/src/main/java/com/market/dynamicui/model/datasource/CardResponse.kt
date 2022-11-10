@@ -50,7 +50,7 @@ data class BannerItemResponse(
 )
 
 data class RectHorizontalListResponse(
-    override val cardId: String,
+    override val cardId: String = CardResponseType.RECT_HORIZONTAL_LIST.name,
     val rectItemList: List<RectItemResponse>
 ) : CardResponse()
 
