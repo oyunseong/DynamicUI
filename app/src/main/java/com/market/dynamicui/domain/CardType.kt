@@ -1,4 +1,4 @@
-package com.market.dynamicui.model
+package com.market.dynamicui.domain
 
 enum class CardViewType(val value: Int) {
     HEADER(1),

@@ -1,7 +1,5 @@
 package com.market.dynamicui.domain
 
-import com.market.dynamicui.model.*
-
 abstract class Card {
     abstract val cardId: Int
 }

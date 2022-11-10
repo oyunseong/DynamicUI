@@ -1,4 +1,4 @@
-package com.market.dynamicui.home
+package com.market.dynamicui.ui.home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.market.dynamicui.domain.*
-import com.market.dynamicui.model.CardViewType
+import com.market.dynamicui.domain.CardViewType
 import com.market.dynamicui.utils.HorizontalItemDecorator
 import com.market.dynamicui.utils.VerticalItemDecorator
 import com.market.myzepeto.R
@@ -125,6 +125,7 @@ class CardAdapter() :
         private val cardHorizontalAdapter = CardHorizontalAdapter()
         private var circleHorizontalRecyclerView: RecyclerView =
             binding.findViewById(R.id.circleRecyclerView)
+
 
         fun bind(item: CircleHorizontalList) {
             cardHorizontalAdapter.setList(item.circleItemList)

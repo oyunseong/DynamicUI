@@ -1,4 +1,4 @@
-package com.market.dynamicui
+package com.market.dynamicui.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater

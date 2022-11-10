@@ -1,15 +1,14 @@
-package com.market.dynamicui.home
+package com.market.dynamicui.ui.home
 
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.market.dynamicui.domain.*
-import com.market.dynamicui.model.HorizontalListType
+import com.market.dynamicui.domain.HorizontalListType
 import com.market.myzepeto.R
 
 class CardHorizontalAdapter() :
