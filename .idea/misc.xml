@@ -26,6 +26,7 @@
         <entry key="app/src/main/res/layout/item_type_menu.xml" value="0.22" />
         <entry key="app/src/main/res/layout/item_type_peed.xml" value="0.23425925925925925" />
         <entry key="app/src/main/res/layout/item_type_rect.xml" value="0.34270833333333334" />
+        <entry key="app/src/main/res/layout/item_type_video.xml" value="0.22" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.67" />
       </map>
     </option>

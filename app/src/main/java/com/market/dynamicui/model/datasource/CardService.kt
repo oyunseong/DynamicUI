@@ -44,8 +44,8 @@ class CardService {
         return buildList {
             add(
                 VideoResponse(
-                    videoUrl = "",
-                    videoTitle = "",
+                    videoUrl = "https://www.youtube.com/watch?v=JZcdEM1-xhw",
+                    videoTitle = "유튜브 플레이",
                     autoPlay = false
                 )
             )

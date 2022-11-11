@@ -1,46 +1,39 @@
 package com.market.dynamicui.ui.home
 
+import android.net.Uri
 import android.os.Parcelable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.Player
+import com.google.android.exoplayer2.SimpleExoPlayer
+import com.google.android.exoplayer2.source.MediaSource
+import com.google.android.exoplayer2.source.ProgressiveMediaSource
+import com.google.android.exoplayer2.ui.PlayerView
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.market.dynamicui.domain.*
 import com.market.dynamicui.domain.CardViewType
 import com.market.dynamicui.utils.HorizontalItemDecorator
 import com.market.dynamicui.utils.VerticalItemDecorator
+import com.market.dynamicui.utils.printLog
+import com.market.dynamicui.utils.showToast
 import com.market.myzepeto.R
+import java.net.URL
 
 class CardAdapter() :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var items: List<Card> = emptyList()
     private val scrollStates = hashMapOf<Int, Parcelable>()
 
-    override fun getItemViewType(position: Int) = when (items[position]) {
-        is Video -> {
-            CardViewType.VIDEO.value
-        }
-        is Header -> {
-            CardViewType.HEADER.value
-        }
-        is CircleHorizontalList -> {
-            CardViewType.CIRCLE_HORIZONTAL_LIST.value
-        }
-        is RectHorizontalList -> {
-            CardViewType.RECT_HORIZONTAL_LIST.value
-        }
-        is BannerHorizontalList -> {
-            CardViewType.BANNER_HORIZONTAL_LIST.value
-        }
-        else -> {
-            throw IllegalStateException("Not Found ViewHolder Type!!")
-        }
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        Log.d("^^CardAdapter", "onCreateViewHolder call $parent, $viewType")
         return when (viewType) {
             CardViewType.VIDEO.value -> {
                 VideoViewHolder.create(parent)
@@ -63,6 +56,46 @@ class CardAdapter() :
         }
     }
 
+    override fun getItemViewType(position: Int) = when (items[position]) {
+        is Video -> {
+            CardViewType.VIDEO.value
+        }
+        is Header -> {
+            CardViewType.HEADER.value
+        }
+        is CircleHorizontalList -> {
+            Log.d("^^CircleHorizontalList", "getItemViewType call")
+            CardViewType.CIRCLE_HORIZONTAL_LIST.value
+        }
+        is RectHorizontalList -> {
+            CardViewType.RECT_HORIZONTAL_LIST.value
+        }
+        is BannerHorizontalList -> {
+            CardViewType.BANNER_HORIZONTAL_LIST.value
+        }
+        else -> {
+            throw IllegalStateException("Not Found ViewHolder Type!!")
+        }
+    }
+
+    override fun onViewAttachedToWindow(holder: RecyclerView.ViewHolder) {
+        super.onViewAttachedToWindow(holder)
+        when (holder) {
+            is VideoViewHolder -> {
+                holder.player?.playWhenReady = true
+            }
+        }
+    }
+
+    override fun onViewDetachedFromWindow(holder: RecyclerView.ViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        when (holder) {
+            is VideoViewHolder -> {
+                holder.player?.playWhenReady = false
+            }
+        }
+    }
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val key = items[holder.adapterPosition].cardId
         val state = scrollStates[key]
@@ -70,23 +103,42 @@ class CardAdapter() :
             is VideoViewHolder -> {
                 holder.bind(items[position] as Video)
             }
-            is HeaderViewHolder -> {
-                holder.bind(items[position] as Header)
-            }
             is CircleHorizontalListViewHolder -> {
                 holder.bind(items[position] as CircleHorizontalList)
+                // state가 저장된 적이 있다면
                 if (state != null) {
+                    // 상태 저장 SavedState 하고 다시 그리기!
                     holder.horizontalLayoutManager.onRestoreInstanceState(state)
                 } else {
+                    // position 번째 item으로 이동시켜라!
                     holder.horizontalLayoutManager.scrollToPosition(0)
                 }
             }
+            is HeaderViewHolder -> {
+                holder.bind(items[position] as Header)
+            }
             is RectHorizontalListViewHolder -> {
                 holder.bind(items[position] as RectHorizontalList)
+                Log.d(
+                    "^^RectHorizontalListViewHolder",
+                    "onBindViewHolder key, state : $key, $state"
+                )
                 if (state != null) {
                     holder.horizontalLayoutManager.onRestoreInstanceState(state)
+                    Log.d(
+                        "^^RectHorizontalListViewHolder",
+                        "holder.horizontalLayoutManager.onRestoreInstanceState(state) : ${
+                            holder.horizontalLayoutManager.onRestoreInstanceState(state)
+                        }"
+                    )
                 } else {
                     holder.horizontalLayoutManager.scrollToPosition(0)
+                    Log.d(
+                        "^^RectHorizontalListViewHolder",
+                        "holder.horizontalLayoutManager.scrollToPosition(0) : ${
+                            holder.horizontalLayoutManager.scrollToPosition(0)
+                        }"
+                    )
                 }
             }
             is BannerHorizontalListViewHolder -> {
@@ -125,9 +177,40 @@ class CardAdapter() :
 
     class VideoViewHolder(private val binding: View) :
         RecyclerView.ViewHolder(binding) {
-        fun bind(item: Video) {
-            binding.apply {
+        lateinit var layoutManager: LinearLayoutManager
+        var exoPlayerView: PlayerView = binding.findViewById(R.id.exoPlayerView)
+        var player: SimpleExoPlayer? = null
+        private var sampleUrl =
+            "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
 
+        // 출력할 미디어 정보를 가져옴
+        private fun buildMediaSource(
+            uri: String
+        ): MediaSource {
+            val dataSourceFactory = DefaultDataSourceFactory(binding.context, "sample")
+            return ProgressiveMediaSource.Factory(dataSourceFactory)
+                .createMediaSource(MediaItem.fromUri(Uri.parse(uri)))
+        }
+
+        init {
+            d()
+        }
+
+        fun d() {
+            if (exoPlayerView.visibility == View.GONE) {
+                binding.context.showToast("사라짐")
+            }
+        }
+
+
+        //TODO 유튜브는 안나옴 WHY?
+        fun bind(item: Video) {
+            if (player == null) {
+                player = SimpleExoPlayer.Builder(binding.context).build()
+                exoPlayerView.player = player
+                buildMediaSource(sampleUrl).let {
+                    player?.prepare(it)
+                }
             }
         }
 
@@ -142,10 +225,13 @@ class CardAdapter() :
 
     override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
         super.onViewRecycled(holder)
+        Log.d("^^onViewRecycled", "onViewRecycled call!")
         val key = items[holder.adapterPosition].cardId
         when (holder) {
             is CircleHorizontalListViewHolder -> {
+                // LayoutManager의 Parcelable 변수에 recyclerView의 상태를 Parcelable 형식으로 저장
                 scrollStates[key] = holder.horizontalLayoutManager.onSaveInstanceState()!!
+                Log.d("^^onViewRecycled", "holder.horizontalLayoutManager.onSaveInstanceState()")
             }
             is BannerHorizontalListViewHolder -> {
                 scrollStates[key] = holder.horizontalLayoutManager.onSaveInstanceState()!!
@@ -222,10 +308,9 @@ class CardAdapter() :
         }
 
 
-
         companion object Factory {
             fun create(parent: ViewGroup): RectHorizontalListViewHolder {
-                Log.d("++RectHorizontalListViewHolder","Factory create")
+                Log.d("++RectHorizontalListViewHolder", "Factory create")
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val view = layoutInflater.inflate(R.layout.item_type_rect, parent, false)
                 return RectHorizontalListViewHolder(view)
