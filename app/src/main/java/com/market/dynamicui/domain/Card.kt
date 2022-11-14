@@ -1,5 +1,9 @@
 package com.market.dynamicui.domain
 
+import android.os.Parcelable
+import androidx.versionedparcelable.ParcelField
+import kotlinx.parcelize.Parcelize
+
 abstract class Card {
     abstract val cardId: Int
 }
@@ -35,23 +39,26 @@ data class RectHorizontalList(
 
 abstract class CardItem
 
+@Parcelize
 data class CircleItem(
     val iconColor: String,
     val title: String,
     val hasNewContents: Boolean = false,
-) : CardItem()
+) : CardItem(), Parcelable
 
+@Parcelize
 data class BannerItem(
     val title: String,
     val subTitle: String,
     val contentsImageColor: String,
     val backgroundColor: String,
-) : CardItem()
+) : CardItem(), Parcelable
 
+@Parcelize
 data class RectItem(
     val thumbnailColor: String,
     val title: String,
     val subTitle: String
-) : CardItem()
+) : CardItem(), Parcelable
 
 

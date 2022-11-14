@@ -27,7 +27,9 @@ import com.market.dynamicui.utils.showToast
 import com.market.myzepeto.R
 import java.net.URL
 
-class CardAdapter() :
+class CardAdapter(
+    private val onItemClickListener: (CardItem, Int) -> Unit
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var items: List<Card> = emptyList()
     private val scrollStates = hashMapOf<Int, Parcelable>()
@@ -42,13 +44,13 @@ class CardAdapter() :
                 HeaderViewHolder.create(parent)
             }
             CardViewType.CIRCLE_HORIZONTAL_LIST.value -> {
-                CircleHorizontalListViewHolder.create(parent)
+                CircleHorizontalListViewHolder.create(parent, onItemClickListener)
             }
             CardViewType.RECT_HORIZONTAL_LIST.value -> {
-                RectHorizontalListViewHolder.create(parent)
+                RectHorizontalListViewHolder.create(parent, onItemClickListener)
             }
             CardViewType.BANNER_HORIZONTAL_LIST.value -> {
-                BannerHorizontalListViewHolder.create(parent)
+                BannerHorizontalListViewHolder.create(parent, onItemClickListener)
             }
             else -> {
                 throw IllegalStateException("Not Found ViewHolder Type $viewType")
@@ -192,23 +194,12 @@ class CardAdapter() :
                 .createMediaSource(MediaItem.fromUri(Uri.parse(uri)))
         }
 
-        init {
-            d()
-        }
-
-        fun d() {
-            if (exoPlayerView.visibility == View.GONE) {
-                binding.context.showToast("사라짐")
-            }
-        }
-
-
         //TODO 유튜브는 안나옴 WHY?
         fun bind(item: Video) {
             if (player == null) {
                 player = SimpleExoPlayer.Builder(binding.context).build()
                 exoPlayerView.player = player
-                buildMediaSource(sampleUrl).let {
+                buildMediaSource(item.videoUrl).let {
                     player?.prepare(it)
                 }
             }
@@ -242,9 +233,12 @@ class CardAdapter() :
         }
     }
 
-    class CircleHorizontalListViewHolder(private val binding: View) :
+    class CircleHorizontalListViewHolder(
+        private val binding: View,
+        private val onItemClickListener: (CardItem, Int) -> Unit
+    ) :
         RecyclerView.ViewHolder(binding) {
-        private val cardHorizontalAdapter = CardHorizontalAdapter()
+        private val cardHorizontalAdapter = CardHorizontalAdapter(onItemClickListener)
         private var circleHorizontalRecyclerView: RecyclerView =
             binding.findViewById(R.id.circleRecyclerView)
         lateinit var horizontalLayoutManager: LinearLayoutManager
@@ -268,20 +262,30 @@ class CardAdapter() :
                 layoutManager = horizontalLayoutManager
                 adapter = cardHorizontalAdapter
             }
+//            binding.rootView.setOnClickListener {
+////                onItemClickListener.invoke(item.circleItemList.)
+//                "++onItemClickListener".printLog("왜 안불려")
+//            }
         }
 
         companion object Factory {
-            fun create(parent: ViewGroup): CircleHorizontalListViewHolder {
+            fun create(
+                parent: ViewGroup,
+                onItemClickListener: (CardItem, Int) -> Unit
+            ): CircleHorizontalListViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val view = layoutInflater.inflate(R.layout.item_type_circle, parent, false)
-                return CircleHorizontalListViewHolder(view)
+                return CircleHorizontalListViewHolder(view, onItemClickListener)
             }
         }
     }
 
-    class RectHorizontalListViewHolder(private val binding: View) :
+    class RectHorizontalListViewHolder(
+        private val binding: View,
+        private val onItemClickListener: (CardItem, Int) -> Unit
+    ) :
         RecyclerView.ViewHolder(binding) {
-        private val cardHorizontalAdapter = CardHorizontalAdapter()
+        private val cardHorizontalAdapter = CardHorizontalAdapter(onItemClickListener)
         private var rectHorizontalRecyclerView: RecyclerView =
             binding.findViewById(R.id.rectRecyclerView)
         lateinit var horizontalLayoutManager: LinearLayoutManager
@@ -309,18 +313,24 @@ class CardAdapter() :
 
 
         companion object Factory {
-            fun create(parent: ViewGroup): RectHorizontalListViewHolder {
+            fun create(
+                parent: ViewGroup,
+                onItemClickListener: (CardItem, Int) -> Unit
+            ): RectHorizontalListViewHolder {
                 Log.d("++RectHorizontalListViewHolder", "Factory create")
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val view = layoutInflater.inflate(R.layout.item_type_rect, parent, false)
-                return RectHorizontalListViewHolder(view)
+                return RectHorizontalListViewHolder(view, onItemClickListener)
             }
         }
     }
 
-    class BannerHorizontalListViewHolder(private val binding: View) :
+    class BannerHorizontalListViewHolder(
+        private val binding: View,
+        private val onItemClickListener: (CardItem, Int) -> Unit
+    ) :
         RecyclerView.ViewHolder(binding) {
-        private val cardHorizontalAdapter = CardHorizontalAdapter()
+        private val cardHorizontalAdapter = CardHorizontalAdapter(onItemClickListener)
         private var bannerHorizontalRecyclerView: RecyclerView =
             binding.findViewById(R.id.bannerRecyclerView)
         lateinit var horizontalLayoutManager: LinearLayoutManager
@@ -347,10 +357,13 @@ class CardAdapter() :
         }
 
         companion object Factory {
-            fun create(parent: ViewGroup): BannerHorizontalListViewHolder {
+            fun create(
+                parent: ViewGroup,
+                onItemClickListener: (CardItem, Int) -> Unit
+            ): BannerHorizontalListViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val view = layoutInflater.inflate(R.layout.item_type_banner, parent, false)
-                return BannerHorizontalListViewHolder(view)
+                return BannerHorizontalListViewHolder(view, onItemClickListener)
             }
         }
     }
