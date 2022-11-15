@@ -1,4 +1,4 @@
-package com.market.myzepeto
+package com.market.dynamicui
 
 import org.junit.Test
 

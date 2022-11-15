@@ -2,12 +2,9 @@ package com.market.dynamicui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import com.market.myzepeto.R
-import com.market.myzepeto.databinding.ActivityMainBinding
+import com.market.dynamicui.R
+import com.market.dynamicui.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

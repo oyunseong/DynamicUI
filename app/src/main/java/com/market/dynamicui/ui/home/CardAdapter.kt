@@ -7,12 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
-import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
@@ -22,10 +19,7 @@ import com.market.dynamicui.domain.*
 import com.market.dynamicui.domain.CardViewType
 import com.market.dynamicui.utils.HorizontalItemDecorator
 import com.market.dynamicui.utils.VerticalItemDecorator
-import com.market.dynamicui.utils.printLog
-import com.market.dynamicui.utils.showToast
-import com.market.myzepeto.R
-import java.net.URL
+import com.market.dynamicui.R
 
 class CardAdapter(
     private val onItemClickListener: (CardItem, Int) -> Unit

@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.market.dynamicui.domain.*
 import com.market.dynamicui.domain.HorizontalListType
-import com.market.myzepeto.R
+import com.market.dynamicui.R
 
 class CardHorizontalAdapter(
     private val onItemClickListener: (CardItem, Int) -> Unit

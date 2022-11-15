@@ -11,8 +11,8 @@ import com.market.dynamicui.domain.BannerItem
 import com.market.dynamicui.domain.CardItem
 import com.market.dynamicui.domain.CircleItem
 import com.market.dynamicui.domain.RectItem
-import com.market.myzepeto.R
-import com.market.myzepeto.databinding.FragmentSecondBinding
+import com.market.dynamicui.R
+import com.market.dynamicui.databinding.FragmentSecondBinding
 
 class SecondFragment : Fragment() {
 

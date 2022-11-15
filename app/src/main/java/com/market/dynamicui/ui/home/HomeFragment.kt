@@ -12,8 +12,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.market.dynamicui.domain.*
 import com.market.dynamicui.utils.showToast
-import com.market.myzepeto.R
-import com.market.myzepeto.databinding.FragmentFirstBinding
+import com.market.dynamicui.R
+import com.market.dynamicui.databinding.FragmentFirstBinding
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentFirstBinding

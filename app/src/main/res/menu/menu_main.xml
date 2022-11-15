@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.market.myzepeto.com.market.dynamicui.MainActivity">
+    tools:context="com.market.dynamicui.com.market.dynamicui.MainActivity">
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
