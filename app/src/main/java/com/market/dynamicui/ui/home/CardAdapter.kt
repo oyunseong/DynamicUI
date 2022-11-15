@@ -211,7 +211,7 @@ class CardAdapter(
     override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
         super.onViewRecycled(holder)
         Log.d("^^onViewRecycled", "onViewRecycled call!")
-        val key = items[holder.adapterPosition].cardId
+        val key = items[holder.bindingAdapterPosition].cardId
         when (holder) {
             is CircleHorizontalListViewHolder -> {
                 // LayoutManager의 Parcelable 변수에 recyclerView의 상태를 Parcelable 형식으로 저장

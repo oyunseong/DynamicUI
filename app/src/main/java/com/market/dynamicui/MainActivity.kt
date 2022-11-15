@@ -3,7 +3,6 @@ package com.market.dynamicui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
-import com.market.dynamicui.R
 import com.market.dynamicui.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

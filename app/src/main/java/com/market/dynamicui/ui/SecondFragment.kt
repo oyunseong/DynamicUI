@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.market.dynamicui.R
+import com.market.dynamicui.databinding.FragmentSecondBinding
 import com.market.dynamicui.domain.BannerItem
 import com.market.dynamicui.domain.CardItem
 import com.market.dynamicui.domain.CircleItem
 import com.market.dynamicui.domain.RectItem
-import com.market.dynamicui.R
-import com.market.dynamicui.databinding.FragmentSecondBinding
 
 class SecondFragment : Fragment() {
 
