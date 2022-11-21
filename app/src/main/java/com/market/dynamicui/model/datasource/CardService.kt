@@ -44,8 +44,8 @@ class CardService {
         return buildList {
             add(
                 VideoResponse(
-                    videoUrl = "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4",
-//                    videoUrl = "",
+//                    videoUrl = "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4",
+                    videoUrl = "",
                     videoTitle = "플레이",
                     autoPlay = false
                 )
