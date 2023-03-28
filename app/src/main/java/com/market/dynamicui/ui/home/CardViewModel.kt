@@ -24,5 +24,12 @@ class CardViewModel(
 
     private fun getLoadCardData() = viewModelScope.launch {
         _cardDataList.value = cardRepository.getLoadCards()
+        setCardIdsWithListIndex()
+    }
+
+    private fun setCardIdsWithListIndex() {
+        _cardDataList.value?.forEachIndexed { index, card ->
+            card.cardId = index
+        }
     }
 }

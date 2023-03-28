@@ -8,14 +8,14 @@ fun List<CardResponse>.toCard(): List<Card> {
         when (it) {
             is HeaderResponse -> {
                 Header(
-                    cardId = it.cardId.convertCardType(),
+                    cardType = it.cardType.convertCardType(),
                     title = it.title,
                     buttonText = it.buttonText,
                 )
             }
             is VideoResponse -> {
                 Video(
-                    cardId = it.cardId.convertCardType(),
+                    cardType = it.cardType.convertCardType(),
                     videoUrl = it.videoUrl,
                     videoTitle = it.videoTitle,
                     autoPlay = it.autoPlay,
@@ -23,19 +23,19 @@ fun List<CardResponse>.toCard(): List<Card> {
             }
             is CircleHorizontalListResponse -> {
                 CircleHorizontalList(
-                    cardId = it.cardId.convertCardType(),
+                    cardType = it.cardType.convertCardType(),
                     circleItemList = it.circleItemList.toCircleItemList()
                 )
             }
             is BannerHorizontalListResponse -> {
                 BannerHorizontalList(
-                    cardId = it.cardId.convertCardType(),
+                    cardType = it.cardType.convertCardType(),
                     bannerItemList = it.bannerItemList.toBannerItemList()
                 )
             }
             is RectHorizontalListResponse -> {
                 RectHorizontalList(
-                    cardId = it.cardId.convertCardType(),
+                    cardType = it.cardType.convertCardType(),
                     rectItemList = it.rectItemList.toRectItemList()
                 )
             }

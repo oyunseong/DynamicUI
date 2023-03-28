@@ -10,24 +10,24 @@ package com.market.dynamicui.model.datasource
  * cardRepository에서는 CardService에서 CardList를 받고, 그대로 ui Model로 변환한 새로운 리스트 반환
  * */
 abstract class CardResponse {
-    abstract val cardId: String
+    abstract val cardType: String
 }
 
 data class HeaderResponse(
-    override val cardId: String = CardResponseType.HEADER.name,
+    override val cardType: String = CardResponseType.HEADER.name,
     val title: String,
     val buttonText: String
 ) : CardResponse()
 
 data class VideoResponse(
-    override val cardId: String = CardResponseType.VIDEO.name,
+    override val cardType: String = CardResponseType.VIDEO.name,
     val videoUrl: String,
     val videoTitle: String,
     val autoPlay: Boolean = false,
 ) : CardResponse()
 
 data class CircleHorizontalListResponse(
-    override val cardId: String = CardResponseType.CIRCLE_HORIZONTAL_LIST.name,
+    override val cardType: String = CardResponseType.CIRCLE_HORIZONTAL_LIST.name,
     val circleItemList: List<CircleItemResponse>
 ) : CardResponse()
 
@@ -38,7 +38,7 @@ data class CircleItemResponse(
 )
 
 data class BannerHorizontalListResponse(
-    override val cardId: String = CardResponseType.BANNER_HORIZONTAL_LIST.name,
+    override val cardType: String = CardResponseType.BANNER_HORIZONTAL_LIST.name,
     val bannerItemList: List<BannerItemResponse>
 ) : CardResponse()
 
@@ -50,7 +50,7 @@ data class BannerItemResponse(
 )
 
 data class RectHorizontalListResponse(
-    override val cardId: String = CardResponseType.RECT_HORIZONTAL_LIST.name,
+    override val cardType: String = CardResponseType.RECT_HORIZONTAL_LIST.name,
     val rectItemList: List<RectItemResponse>
 ) : CardResponse()
 

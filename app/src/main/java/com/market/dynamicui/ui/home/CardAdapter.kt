@@ -28,6 +28,7 @@ class CardAdapter(
     private var items: List<Card> = emptyList()
     private val scrollStates = hashMapOf<Int, Parcelable>()
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         Log.d("^^CardAdapter", "onCreateViewHolder call $parent, $viewType")
         return when (viewType) {
@@ -115,26 +116,10 @@ class CardAdapter(
             }
             is RectHorizontalListViewHolder -> {
                 holder.bind(items[position] as RectHorizontalList)
-                Log.d(
-                    "^^RectHorizontalListViewHolder",
-                    "onBindViewHolder key, state : $key, $state"
-                )
                 if (state != null) {
                     holder.horizontalLayoutManager.onRestoreInstanceState(state)
-                    Log.d(
-                        "^^RectHorizontalListViewHolder",
-                        "holder.horizontalLayoutManager.onRestoreInstanceState(state) : ${
-                            holder.horizontalLayoutManager.onRestoreInstanceState(state)
-                        }"
-                    )
                 } else {
                     holder.horizontalLayoutManager.scrollToPosition(0)
-                    Log.d(
-                        "^^RectHorizontalListViewHolder",
-                        "holder.horizontalLayoutManager.scrollToPosition(0) : ${
-                            holder.horizontalLayoutManager.scrollToPosition(0)
-                        }"
-                    )
                 }
             }
             is BannerHorizontalListViewHolder -> {
@@ -208,6 +193,10 @@ class CardAdapter(
         }
     }
 
+    /**
+     * ViewHolder가 재사용될 때 호출됩니다.
+     * 즉, RecyclerView에서 VewiHolder가 다른 데이터로 바인딩되기 전에 호출됩니다.
+     */
     override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
         super.onViewRecycled(holder)
         Log.d("^^onViewRecycled", "onViewRecycled call!")
@@ -215,6 +204,7 @@ class CardAdapter(
         when (holder) {
             is CircleHorizontalListViewHolder -> {
                 // LayoutManager의 Parcelable 변수에 recyclerView의 상태를 Parcelable 형식으로 저장
+                // Parcelable = 포장 가능한 = Parcel 포장, able 가능한
                 scrollStates[key] = holder.horizontalLayoutManager.onSaveInstanceState()!!
                 Log.d("^^onViewRecycled", "holder.horizontalLayoutManager.onSaveInstanceState()")
             }
@@ -256,10 +246,6 @@ class CardAdapter(
                 layoutManager = horizontalLayoutManager
                 adapter = cardHorizontalAdapter
             }
-//            binding.rootView.setOnClickListener {
-////                onItemClickListener.invoke(item.circleItemList.)
-//                "++onItemClickListener".printLog("왜 안불려")
-//            }
         }
 
         companion object Factory {
