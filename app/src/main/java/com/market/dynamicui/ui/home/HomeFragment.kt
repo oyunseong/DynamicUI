@@ -1,6 +1,7 @@
 package com.market.dynamicui.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,17 +15,9 @@ import com.market.dynamicui.domain.*
 import com.market.dynamicui.utils.showToast
 import com.market.dynamicui.R
 import com.market.dynamicui.databinding.FragmentFirstBinding
-import com.market.dynamicui.model.server.MapleAPI
-import com.market.dynamicui.model.server.RetrofitClient
-import com.market.dynamicui.utils.printLog
-import retrofit2.Call
-import retrofit2.Response
-import retrofit2.Retrofit
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentFirstBinding
-    lateinit var retrofit: Retrofit
-    lateinit var mapleAPI: MapleAPI
     private val cardViewModel by viewModels<CardViewModel>()
     private val cardAdapter = CardAdapter(onItemClickListener = { it, position ->
         when (it) {
@@ -78,7 +71,6 @@ class HomeFragment : Fragment() {
         cardViewModel.cardDataList.observe(viewLifecycleOwner) {
             cardAdapter.setList(it)
         }
-        initServer()
     }
 
     private fun setCardRecyclerView() {
@@ -87,28 +79,5 @@ class HomeFragment : Fragment() {
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = cardAdapter
         }
-    }
-
-    private fun initServer() {
-        "++initServer call".printLog()
-        retrofit = RetrofitClient.getInstance()
-        mapleAPI = retrofit.create(MapleAPI::class.java)
-
-        Runnable {
-            mapleAPI.getData().enqueue(object : retrofit2.Callback<Maple> {
-                override fun onResponse(call: Call<Maple>, response: Response<Maple>) {
-                    val data = response.body()
-                    if (data == null) {
-                        requireContext().showToast("데이터가 없습니다.")
-                    }
-                    "++onResponse".printLog("initServer")
-                }
-
-                override fun onFailure(call: Call<Maple>, t: Throwable) {
-                    "onFailure message : " + t.message.toString().printLog("initServer")
-                }
-
-            })
-        }.run()
     }
 }
