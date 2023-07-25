@@ -1,6 +1,6 @@
 # DynamicUI
 
-기획 문서 : https://www.notion.so/Dynamic-UI-Project-Document-23b78abe83114f5b94bb17985eddb01f
+기획 문서 : [https://www.notion.so/Dynamic-UI-Project-Document-23b78abe83114f5b94bb17985eddb01f](https://oyunseong.notion.site/Dynamic-UI-Project-Document-23b78abe83114f5b94bb17985eddb01f?pvs=4)
 
 ## 앱 실행 화면 : 
 
