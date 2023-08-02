@@ -8,11 +8,7 @@
 
 ---
 ### 기획
-<img src="https://github.com/oyunseong/DynamicUI/assets/42116216/8fd76742-ea3c-46aa-b536-8e5b79ece1da" width="300" height="533.33"/> 
-
-![1](https://github.com/oyunseong/DynamicUI/assets/42116216/8fd76742-ea3c-46aa-b536-8e5b79ece1da)
-![2](https://github.com/oyunseong/DynamicUI/assets/42116216/38dd5e17-94f2-4a99-a165-67b613162c93)
-![3](https://github.com/oyunseong/DynamicUI/assets/42116216/982f999a-2734-4083-b89b-b068bb5697ac)
+<img src="https://github.com/oyunseong/DynamicUI/assets/42116216/8fd76742-ea3c-46aa-b536-8e5b79ece1da" width="300" height="533.33"/> <img src="https://github.com/oyunseong/DynamicUI/assets/42116216/38dd5e17-94f2-4a99-a165-67b613162c93" width="300" height="533.33"/> <img src="https://github.com/oyunseong/DynamicUI/assets/42116216/982f999a-2734-4083-b89b-b068bb5697ac" width="300" height="533.33"/> 
 
 
 # 배경 정보 & 조사 내용
