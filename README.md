@@ -1,15 +1,22 @@
-![image](https://github.com/oyunseong/DynamicUI/assets/42116216/ed34b219-2fb6-4b2a-ae6e-b242a862dcb5)# DynamicUI
+# DynamicUI
 
 기획 문서 : [https://www.notion.so/Dynamic-UI-Project-Document-23b78abe83114f5b94bb17985eddb01f](https://oyunseong.notion.site/Dynamic-UI-Project-Document-23b78abe83114f5b94bb17985eddb01f?pvs=4)
 
 ## 앱 실행 화면 : 
 
-
 <img src="https://user-images.githubusercontent.com/42116216/211138970-0e5cac08-57ea-4caf-a3e0-45fe7033e3b7.jpg" width="300" height="533.33"/> <img src="https://user-images.githubusercontent.com/42116216/211138972-3344ceaa-43ea-493b-8862-11f8b77c75c8.jpg" width="300" height="533.33"/> <img src="https://user-images.githubusercontent.com/42116216/211296144-0fc8ee46-2a04-4a86-a831-b4fd15f021ce.gif" width="300" height="533.33"/>
 
+---
+### 기획
+<img src="https://github.com/oyunseong/DynamicUI/assets/42116216/8fd76742-ea3c-46aa-b536-8e5b79ece1da" width="300" height="533.33"/> 
+
 ![1](https://github.com/oyunseong/DynamicUI/assets/42116216/8fd76742-ea3c-46aa-b536-8e5b79ece1da)
+![2](https://github.com/oyunseong/DynamicUI/assets/42116216/38dd5e17-94f2-4a99-a165-67b613162c93)
+![3](https://github.com/oyunseong/DynamicUI/assets/42116216/982f999a-2734-4083-b89b-b068bb5697ac)
+
 
 # 배경 정보 & 조사 내용
+
 
 ---
 
