@@ -8,3 +8,58 @@
 <img src="https://user-images.githubusercontent.com/42116216/211138970-0e5cac08-57ea-4caf-a3e0-45fe7033e3b7.jpg" width="300" height="533.33"/> <img src="https://user-images.githubusercontent.com/42116216/211138972-3344ceaa-43ea-493b-8862-11f8b77c75c8.jpg" width="300" height="533.33"/> <img src="https://user-images.githubusercontent.com/42116216/211296144-0fc8ee46-2a04-4a86-a831-b4fd15f021ce.gif" width="300" height="533.33"/>
 
 
+# 배경 정보 & 조사 내용
+
+---
+
+Multi ViewHoder를 사용하는 앱
+
+1. Netflix
+2. G마켓 
+3. 네이버 쇼핑 라이브
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8762a510-300d-40e1-8df3-4621586d72e2/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0a25b027-0f03-49bc-a692-78f0d124ca4a/Untitled.png)
+
+# 왜?
+
+---
+
+### 백엔드 서버에서 내려주는 다양한 타입 적용
+
+- 운영에서 앱의 UI 및 컨텐츠를 동적으로 구성할 수 있도록 하기 위함
+    1. 웹 어드민에서 뷰타입 및 컨텐츠 설정
+    2. 서버에 반영
+    3. 클라이언트에서는 운영에서 설정한대로 UI가 보여지도록 구현
+
+# 어떻게?
+
+---
+
+- Multi ViewHolder를 이용해 다양한 타입의 recyclerview item type을 보여줌
+- 총 2가지의 버전으로 UI 제작 진행 예정
+    1. XML
+    2. Android Compose
+
+사용 예정 기술 스텍 : Android Jetpack, Databinding, Coroutine, MVVM 등
+
+사용 라이브러리 : ExoPlayer
+
+# 필수 요구사항
+
+---
+
+- 사전 조사한 앱 Home UI와 비슷하게 제작
+- 서버에서 내려주는 정보에 맞춰서 뷰 순서 및 컨텐츠가 배치되도록 구현
+- View Type은 최소 4~5개
+- Compose와 Xml로 UI를 제작해도 ViewModel은 항상 변하지 않도록 코드 작성
+- Icon은 컬러로 설정할 수 있도록 구현
+- View Type 중 동영상 재생이 가능한 Video Player View 추가
+
+# 성공 지표
+
+---
+
+1. 유연하게 타입 변경이 가능한 RecyclerView 구현
+2. UI를 그리는 방식이 달라져도 동일한 ViewModel Class 사용
