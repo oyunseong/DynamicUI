@@ -20,6 +20,10 @@ Multi ViewHoder를 사용하는 앱
 
 <img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8762a510-300d-40e1-8df3-4621586d72e2/Untitled.png" width="300" height="533.33"/> <img src="https://user-images.githubusercontent.com/42116216/211138972-3344ceaa-43ea-493b-8862-11f8b77c75c8.jpg" width="300" height="533.33"/>
 
+<img src="https://github.com/oyunseong/DynamicUI/assets/42116216/a11c3be6-11a3-41b3-add4-1fc19eba19b8" width="300" height="533.33"/> 
+![1](https://github.com/oyunseong/DynamicUI/assets/42116216/a11c3be6-11a3-41b3-add4-1fc19eba19b8)
+![2](https://github.com/oyunseong/DynamicUI/assets/42116216/95444632-1562-41e6-bb61-3dec7b8d80c6)
+![3](https://github.com/oyunseong/DynamicUI/assets/42116216/b195f459-ea87-4e69-938d-a31a0172d0c3)
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0a25b027-0f03-49bc-a692-78f0d124ca4a/Untitled.png)
 
@@ -48,8 +52,8 @@ Multi ViewHoder를 사용하는 앱
 사용 라이브러리 : ExoPlayer
 
 # 필수 요구사항
-
 ---
+
 
 - 사전 조사한 앱 Home UI와 비슷하게 제작
 - 서버에서 내려주는 정보에 맞춰서 뷰 순서 및 컨텐츠가 배치되도록 구현
