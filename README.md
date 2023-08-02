@@ -15,7 +15,6 @@ MVVM, Kotlin, ViewBinding, RecyclerView + Multi ViewHolder
 프로젝트를 진행하며 경험하고 체득한 부분
 
 RecyclerView + Multi ViewHolder를 사용하여 정의된 데이터를 기반으로 뷰의 배치 및 컨텐츠를 동적으로 구성하는 방법 학습
-- 기존에는 보여지는 컨텐츠 순서를 바꾸기 위해서는 앱 업데이트가 반드시 필요하는 문제점이 있었습니다. RecyclerView + Multi ViewHolder를 적용 후 어드민에서 컨텐츠를 설정하고, 앱을 업데이트하지 않고도 UI를 변경할 수 있었습니다.
 
 ---
 
