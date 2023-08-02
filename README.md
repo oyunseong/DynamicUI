@@ -1,4 +1,4 @@
-# DynamicUI
+![image](https://github.com/oyunseong/DynamicUI/assets/42116216/ed34b219-2fb6-4b2a-ae6e-b242a862dcb5)# DynamicUI
 
 기획 문서 : [https://www.notion.so/Dynamic-UI-Project-Document-23b78abe83114f5b94bb17985eddb01f](https://oyunseong.notion.site/Dynamic-UI-Project-Document-23b78abe83114f5b94bb17985eddb01f?pvs=4)
 
@@ -18,7 +18,8 @@ Multi ViewHoder를 사용하는 앱
 2. G마켓 
 3. 네이버 쇼핑 라이브
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8762a510-300d-40e1-8df3-4621586d72e2/Untitled.png)
+<img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8762a510-300d-40e1-8df3-4621586d72e2/Untitled.png" width="300" height="533.33"/> <img src="https://user-images.githubusercontent.com/42116216/211138972-3344ceaa-43ea-493b-8862-11f8b77c75c8.jpg" width="300" height="533.33"/>
+
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0a25b027-0f03-49bc-a692-78f0d124ca4a/Untitled.png)
 
