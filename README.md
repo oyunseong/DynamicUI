@@ -8,11 +8,8 @@
 
 ---
 ### 기획
-<img src="https://github.com/oyunseong/DynamicUI/assets/42116216/8fd76742-ea3c-46aa-b536-8e5b79ece1da" width="300" height="533.33"/> <img src="https://github.com/oyunseong/DynamicUI/assets/42116216/38dd5e17-94f2-4a99-a165-67b613162c93" width="300" height="533.33"/> <img src="https://github.com/oyunseong/DynamicUI/assets/42116216/982f999a-2734-4083-b89b-b068bb5697ac" width="300" height="533.33"/> 
-
 
 # 배경 정보 & 조사 내용
-
 
 ---
 
@@ -22,14 +19,7 @@ Multi ViewHoder를 사용하는 앱
 2. G마켓 
 3. 네이버 쇼핑 라이브
 
-<img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8762a510-300d-40e1-8df3-4621586d72e2/Untitled.png" width="300" height="533.33"/> <img src="https://user-images.githubusercontent.com/42116216/211138972-3344ceaa-43ea-493b-8862-11f8b77c75c8.jpg" width="300" height="533.33"/>
-
-<img src="https://github.com/oyunseong/DynamicUI/assets/42116216/a11c3be6-11a3-41b3-add4-1fc19eba19b8" width="300" height="533.33"/> 
-![1](https://github.com/oyunseong/DynamicUI/assets/42116216/a11c3be6-11a3-41b3-add4-1fc19eba19b8)
-![2](https://github.com/oyunseong/DynamicUI/assets/42116216/95444632-1562-41e6-bb61-3dec7b8d80c6)
-![3](https://github.com/oyunseong/DynamicUI/assets/42116216/b195f459-ea87-4e69-938d-a31a0172d0c3)
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0a25b027-0f03-49bc-a692-78f0d124ca4a/Untitled.png)
+<img src="https://github.com/oyunseong/DynamicUI/assets/42116216/8fd76742-ea3c-46aa-b536-8e5b79ece1da" width="300" height="533.33"/> <img src="https://github.com/oyunseong/DynamicUI/assets/42116216/38dd5e17-94f2-4a99-a165-67b613162c93" width="300" height="533.33"/> <img src="https://github.com/oyunseong/DynamicUI/assets/42116216/982f999a-2734-4083-b89b-b068bb5697ac" width="300" height="533.33"/> 
 
 # 왜?
 
